@@ -1,75 +1,73 @@
-# 🐾 WithTail Frontend
+# React + TypeScript + Vite
 
-WithTail은 반려동물 병원 및 장례식장 예약을 돕는 서비스입니다.  
-본 레포지토리는 **사용자 인증(로그인/회원가입) 중심의 프론트엔드 구현**을 다룹니다.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-React + TypeScript 기반으로 UI/UX를 설계했으며,  
-실서비스를 가정한 **휴대폰 인증 플로우와 단계별 회원가입 경험**에 집중했습니다.
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## ✨ 주요 기능
+## React Compiler
 
-- 로그인 / 회원가입 UI
-- 휴대폰 번호 인증 (SMS 인증 UX)
-- 단계별 회원가입 플로우
-  - 약관 동의
-  - 개인정보 입력
-  - 휴대폰 인증
-- 입력값 검증 및 버튼 활성/비활성 UX
-- 인증 타이머 및 재전송 처리
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
----
+## Expanding the ESLint configuration
 
-## 🛠 Tech Stack
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- **Frontend**
-  - React
-  - TypeScript
-  - Vite
-  - CSS (Vanilla CSS)
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-- **State / Network**
-  - React Hooks
-  - Axios
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-- **Collaboration**
-  - Git
-  - GitHub
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
 
----
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-## 🌿 Branch Strategy
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-본 프로젝트는 **기능 단위 브랜치 전략**을 사용합니다.
-
-- **main**
-  - 배포 및 안정 버전 관리 브랜치
-  - 직접 커밋하지 않음
-  - Pull Request를 통해서만 병합
-
-
-- **feature-***
-  - 기능 단위 개발 브랜치
-  - 예: `feature-reservation`, `feature-profile`
-
-> 모든 신규 기능은 feature 브랜치에서 개발 후 main 브랜치로 병합합니다.
-
----
-
-## 🔐 Authentication
-
-- 인증 방식: **JWT (Bearer Token)**
-- Swagger 기반 백엔드 API와 연동
-- 인증 관련 API
-  - 휴대폰 인증번호 발송
-  - 인증번호 검증
-  - 회원가입 등
-
----
-
-## ▶️ Getting Started
-
-```bash
-npm install
-npm run dev
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```

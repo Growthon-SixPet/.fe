@@ -1,0 +1,277 @@
+/* =============================
+   메인 카드 (레이아웃 수정)
+============================= */
+
+.mp-main {
+  width: 100%;                 /* ✅ flex 환경에 맞게 */
+  max-width: 636px;            /* ✅ 기존 디자인 폭 유지 */
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px 26px 26px;
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.04);
+  box-sizing: border-box;
+}
+
+/* =============================
+   상단 헤더
+============================= */
+
+.mp-main-header {
+  text-align: left;
+}
+
+.mp-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #64748B;
+}
+
+.mp-subtitle {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: #94A3B8;
+}
+
+.mp-top-line {
+  height: 1px;
+  width: 100%;                 /* ✅ 수정 */
+  background: #E9EEF4;
+  margin: 14px 0 18px;
+}
+
+/* =============================
+   프로필 헤더
+============================= */
+
+.mp-profile-head {
+  margin-bottom: 12px;
+}
+
+.mp-profile-head-left {
+  font-size: 13px;
+  font-weight: 800;
+  color: #677C96;
+  width: fit-content;
+  margin-top: 25px;
+}
+
+.mp-profile-head-line {
+  height: 1px;
+  background: var(--line);
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* =============================
+   콘텐츠 영역
+============================= */
+
+.mp-profile-content {
+  display: flex;
+  gap: 26px;
+  align-items: flex-start;
+}
+
+.mp-profile-col {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 4px;
+}
+
+.mp-avatar {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: #f8fafc;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.mp-avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(45deg, #e5e7eb 25%, transparent 25%),
+    linear-gradient(-45deg, #e5e7eb 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e5e7eb 75%),
+    linear-gradient(-45deg, transparent 75%, #e5e7eb 75%);
+  background-size: 18px 18px;
+  background-position: 0 0, 0 9px, 9px -9px, -9px 0px;
+  opacity: 0.7;
+}
+
+.mp-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mp-info-col {
+  flex: 1;
+  min-width: 0;
+}
+
+/* =============================
+   입력 영역
+============================= */
+
+.mp-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+
+.mp-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.mp-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 13px;
+  color: var(--text);
+  padding: 6px 8px;
+  border-radius: 6px;
+}
+
+.mp-input:focus {
+  background: #f8fafc;
+}
+
+.mp-birth-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+}
+
+.mp-birth-text {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.mp-calendar-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.mp-calendar-btn:hover {
+  background: #f1f5f9;
+}
+
+.mp-date-hidden {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+.mp-gender {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mp-radio {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.mp-radio input {
+  accent-color: var(--brand);
+}
+
+.mp-readonly {
+  color: #64748b;
+}
+
+.mp-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+/* =============================
+   버튼
+============================= */
+
+.mp-outline-btn {
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: #fff;
+  border: 1px solid var(--line);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.mp-primary-btn {
+  height: 36px;
+  padding: 0 18px;
+  border-radius: 10px;
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* =============================
+   모달
+============================= */
+
+.mp-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.mp-modal {
+  width: 420px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+}
+
+/* =============================
+   프로필 상단 강조 영역
+============================= */
+
+.mp-main.profile .mp-main-top {
+  background: #f5f7fa;
+  margin: -22px -26px 0;
+  padding: 22px 26px 0;
+  border-radius: 12px 12px 0 0;
+}
+
+.mp-main.profile {
+  min-height: 633px;
+}
